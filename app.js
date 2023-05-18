@@ -9,10 +9,10 @@ export const imgListContainer = document.getElementById("images-list");
 const imgWidth = 1920;
 const imgHeight = 1080;
 // number of pictures to load
-export const imagesPerFetch = 5;
+export const imagesPerFetch = 10;
 // vertical offset (in px) from container's bottom border
 // new pictures are loaded when this value has been reached while scrolling
-const pixelsBeforeFetch = 3000;
+const pixelsBeforeFetch = 5000;
 
 // load initial images
 getImages(imagesPerFetch, imgWidth, imgHeight);
