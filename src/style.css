@@ -25,6 +25,11 @@ body {
 	font-weight: 400;
 }
 
+a {
+	/* text-decoration: none; */
+	color: inherit;
+}
+
 .header {
 	font-size: 2rem;
 	margin-block: 1rem 0;
@@ -39,6 +44,10 @@ body {
 
 .footer {
 	padding: 0.5rem 0;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 .images-list {
@@ -81,8 +90,16 @@ body {
 	.header {
 		font-size: 0.85rem;
 	}
+
 	.images-list__item {
 		margin-bottom: 0.2rem;
+	}
+
+	.footer {
+		flex-direction: column;
+		align-items: center;
+		row-gap: 0.5rem;
+		font-size: 0.8rem;
 	}
 }
 
@@ -95,7 +112,12 @@ body {
 	.header {
 		font-size: 0.6rem;
 	}
+
 	.images-list__item {
 		margin-bottom: 0;
+	}
+
+	.footer {
+		font-size: 0.7rem;
 	}
 }
