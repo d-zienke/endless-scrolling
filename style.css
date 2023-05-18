@@ -1,17 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Overlock&display=swap");
 
-html {
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	align-items: center;
-
-	margin: 0;
-	min-height: 100vh;
+	height: 100vh;
+	overflow: hidden;
 
 	background-color: #f1f1f1;
 	background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8c8c8' fill-opacity='0.5' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); /* https://heropatterns.com/ */
@@ -21,4 +27,75 @@ body {
 
 .header {
 	font-size: 2rem;
+	margin-block: 1rem 0;
+	text-align: center;
+}
+
+.main {
+	flex-grow: 1;
+	overflow: auto;
+	padding: 1rem;
+}
+
+.footer {
+	padding: 0.5rem 0;
+}
+
+.images-list {
+	margin: 0 auto;
+	width: 80%;
+	max-height: 100%;
+	overflow: auto;
+}
+
+.images-list__item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.images-list__item a {
+	width: 100%;
+}
+
+.images-list__image {
+	width: 100%;
+	height: auto;
+}
+
+/* Media Query: Laptop */
+@media screen and (max-width: 1440px) {
+	.images-list {
+		width: 90%;
+	}
+
+	.header {
+		font-size: 1.5rem;
+	}
+}
+
+/* Media Query: Tablet */
+@media screen and (max-width: 768px) {
+	.header {
+		font-size: 0.85rem;
+	}
+	.images-list__item {
+		margin-bottom: 0.2rem;
+	}
+}
+
+/* Media Query: Mobile */
+@media screen and (max-width: 425px) {
+	.images-list {
+		width: 100%;
+	}
+
+	.header {
+		font-size: 0.6rem;
+	}
+	.images-list__item {
+		margin-bottom: 0;
+	}
 }
