@@ -1,4 +1,4 @@
-import { imagesPerFetch, imgListContainer } from "../app.js";
+import { imagesPerFetch, imgListContainer } from "../../app.js";
 export { getImages, loading };
 
 let loading = false;
@@ -7,11 +7,11 @@ let counter = 0;
 // get and render images
 function getImages(amount, imgWidth, imgHeight) {
 	// specify base URL
+	const baseUrl = `https://picsum.photos/${imgWidth}/${imgHeight}.webp`;
 	counter = 0;
 	loading = true;
 	try {
 		for (let i = 0; i < amount; i++) {
-			const baseUrl = `https://picsum.photos/${imgWidth}/${imgHeight}?random=${i}.webp`;
 			getFinalUrl(baseUrl);
 		}
 	} catch (error) {

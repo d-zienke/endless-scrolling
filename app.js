@@ -1,4 +1,4 @@
-import { getImages, loading } from "./functions/images-api.js";
+import { getImages, loading } from "./src/functions/images-api.js";
 
 // select DOM elements
 export const imgListContainer = document.getElementById("images-list");
