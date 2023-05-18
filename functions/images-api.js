@@ -1,13 +1,17 @@
-import { imgListContainer } from "../app.js";
-export { getImages };
+import { imagesPerFetch, imgListContainer } from "../app.js";
+export { getImages, loading };
 
-// specify base URL
-const baseUrl = `https://picsum.photos/1920/1080?random=1.webp`;
+let loading = false;
+let counter = 0;
 
 // get and render images
-function getImages(amount) {
+function getImages(amount, imgWidth, imgHeight) {
+	// specify base URL
+	counter = 0;
+	loading = true;
 	try {
 		for (let i = 0; i < amount; i++) {
+			const baseUrl = `https://picsum.photos/${imgWidth}/${imgHeight}?random=${i}.webp`;
 			getFinalUrl(baseUrl);
 		}
 	} catch (error) {
@@ -17,18 +21,26 @@ function getImages(amount) {
 
 // create and render DOM element for image
 function renderImage(author, srcUrl, imgUrl) {
+	// create container for <a> and <img>
 	const element = document.createElement("div");
 	element.classList.add("images-list__item");
+	// create <a> directing to image's source
 	const sourceLink = document.createElement("a");
 	sourceLink.setAttribute("href", srcUrl);
 	sourceLink.setAttribute("target", "_blank");
+	// create <img>
 	const image = document.createElement("img");
 	image.classList.add("images-list__image");
 	image.setAttribute("src", imgUrl);
 	image.setAttribute("title", `Image by: ${author}`);
+	// append whole item to imgListContainer
 	sourceLink.appendChild(image);
 	element.appendChild(sourceLink);
 	imgListContainer.appendChild(element);
+	// count each rendered item
+	counter++;
+	// withhold making new API call until these items have been rendered
+	if (counter === imagesPerFetch) loading = false;
 }
 
 // use final URL to get image's metadata
